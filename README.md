@@ -1,6 +1,6 @@
 # Apple Music 风格播放器贴纸
 
-> 在线体验：将在 GitHub Pages 发布后更新
+> 在线体验：[xingfangxi6.github.io/music-player-sticker](https://xingfangxi6.github.io/music-player-sticker/)
 >
 > 建议使用手机浏览器打开，上传一张照片即可试用。
 
