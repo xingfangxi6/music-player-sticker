@@ -1,0 +1,166 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Apple Music 贴纸 - 项目说明与使用数据</title>
+  <style>
+    @page { size: A4; margin: 0; }
+    * { box-sizing: border-box; }
+    body {
+      margin: 0;
+      color: #1d1d1f;
+      font-family: -apple-system, BlinkMacSystemFont, "PingFang SC", "Microsoft YaHei", sans-serif;
+      -webkit-print-color-adjust: exact;
+      print-color-adjust: exact;
+    }
+    .page {
+      position: relative;
+      width: 210mm;
+      height: 297mm;
+      overflow: hidden;
+      padding: 19mm 18mm 16mm;
+      background: #ffffff;
+      page-break-after: always;
+    }
+    .page:last-child { page-break-after: auto; }
+    .accent { width: 9mm; height: 1.5mm; margin-bottom: 7mm; background: #ff2442; }
+    .eyebrow {
+      color: #ff2442;
+      font-size: 10pt;
+      font-weight: 700;
+      letter-spacing: .4px;
+    }
+    h1 { margin: 3mm 0 3mm; font-size: 31pt; letter-spacing: 0; line-height: 1.18; }
+    h2 { margin: 0; font-size: 16pt; letter-spacing: 0; }
+    p { margin: 0; font-size: 10.5pt; line-height: 1.65; }
+    .sub { max-width: 142mm; color: #6e6e73; font-size: 12pt; line-height: 1.65; }
+    .rule { height: 1px; margin: 7mm 0; background: #e5e5e7; }
+    .metric-row { display: flex; gap: 4mm; margin: 7mm 0 5mm; }
+    .metric { flex: 1; min-height: 39mm; padding: 5mm; border: 1px solid #e5e5e7; border-radius: 3mm; }
+    .metric.primary { color: #fff; border-color: #ff2442; background: #ff2442; }
+    .metric-label { font-size: 9.5pt; opacity: .9; }
+    .metric-value { margin-top: 2mm; font-size: 25pt; font-weight: 750; letter-spacing: 0; }
+    .metric-note { margin-top: 1mm; font-size: 8.5pt; opacity: .88; }
+    .evidence { display: grid; grid-template-columns: 1.22fr .78fr; gap: 5mm; align-items: start; margin-top: 5mm; }
+    .evidence img { width: 100%; border: 1px solid #e5e5e7; border-radius: 2mm; }
+    .caption { margin-top: 2mm; color: #6e6e73; font-size: 8.5pt; line-height: 1.5; }
+    .callout { padding: 5mm; border-left: 1.5mm solid #ff2442; background: #fff7f8; }
+    .callout strong { display: block; margin-bottom: 1.5mm; font-size: 10pt; }
+    .link { display: inline-block; color: #0a66c2; font-size: 9pt; overflow-wrap: anywhere; text-decoration: none; }
+    .footer { position: absolute; bottom: 9mm; left: 18mm; right: 18mm; display: flex; justify-content: space-between; color: #86868b; font-size: 8pt; }
+    .section { margin-top: 7mm; }
+    .grid-2 { display: grid; grid-template-columns: 1fr 1fr; gap: 4mm; margin-top: 4mm; }
+    .card { min-height: 33mm; padding: 4.5mm; border: 1px solid #e5e5e7; border-radius: 3mm; }
+    .card h3 { margin: 0 0 2mm; font-size: 10.5pt; }
+    .card p { color: #52525a; font-size: 9.2pt; line-height: 1.55; }
+    .flow { display: flex; align-items: stretch; gap: 2.5mm; margin-top: 5mm; }
+    .flow-item { flex: 1; padding: 3.5mm; border-radius: 2mm; background: #f5f5f7; }
+    .flow-num { color: #ff2442; font-size: 9pt; font-weight: 700; }
+    .flow-text { margin-top: 1mm; font-size: 9.1pt; line-height: 1.4; }
+    .gallery { display: grid; grid-template-columns: repeat(3, 1fr); gap: 3mm; margin-top: 4mm; }
+    .gallery img { width: 100%; aspect-ratio: 3 / 4; object-fit: cover; object-position: top; border-radius: 2mm; }
+    .trial { display: grid; grid-template-columns: 1fr 1fr; gap: 4mm; margin-top: 7mm; }
+    .trial-box { padding: 5mm; background: #1d1d1f; color: #fff; border-radius: 3mm; }
+    .trial-box .label { color: #b0b0b5; font-size: 9pt; }
+    .trial-box a { display: block; margin-top: 2mm; color: #fff; font-size: 10pt; font-weight: 650; overflow-wrap: anywhere; text-decoration: none; }
+    .trial-box.light { border: 1px solid #e5e5e7; background: #fff; color: #1d1d1f; }
+    .trial-box.light a { color: #0a66c2; }
+    .fineprint { color: #86868b; font-size: 8.2pt; line-height: 1.5; }
+  </style>
+</head>
+<body>
+  <section class="page">
+    <div class="accent"></div>
+    <div class="eyebrow">小红书校招｜项目补充材料</div>
+    <h1>Apple Music 贴纸</h1>
+    <p class="sub">一个面向照片编辑场景的静态播放器贴纸工具。用户可上传照片、编辑歌曲信息和播放器样式，并直接导出 PNG 图片。</p>
+    <div class="rule"></div>
+
+    <div class="metric-row">
+      <div class="metric primary">
+        <div class="metric-label">平台使用人数</div>
+        <div class="metric-value">6,458</div>
+        <div class="metric-note">小红书创作服务平台后台展示</div>
+      </div>
+      <div class="metric">
+        <div class="metric-label">产品形态</div>
+        <div class="metric-value">小工具</div>
+        <div class="metric-note">可在小红书笔记内挂载</div>
+      </div>
+      <div class="metric">
+        <div class="metric-label">核心输出</div>
+        <div class="metric-value">PNG</div>
+        <div class="metric-note">支持 1080px / 2160px 导出</div>
+      </div>
+    </div>
+
+    <div class="evidence">
+      <div>
+        <h2>真实使用证据</h2>
+        <p style="margin-top:2mm;color:#52525a;">后台显示，截至 2026 年 9 月 20 日，Apple Music 贴纸已有 <strong>6,458 人使用</strong>。</p>
+        <img style="margin-top:4mm;" src="evidence/xiaohongshu-tool-usage-20260920.png" alt="小红书后台使用人数截图">
+        <div class="caption">口径说明：平台展示的“使用人数”，不等同于下载量、DAU、MAU 或留存。</div>
+      </div>
+      <div class="callout">
+        <strong>解决的问题</strong>
+        <p>用户想在照片里加入 Apple Music 风格播放器，传统流程需要截图、抠图、再进入修图工具调整。</p>
+        <br>
+        <strong>产品解法</strong>
+        <p>把照片、歌曲信息、播放器材质和图层关系收敛在同一个可编辑画布内，完成后直接导出。</p>
+        <br>
+        <strong>在线体验</strong>
+        <a class="link" href="https://xingfangxi6.github.io/music-player-sticker/">xingfangxi6.github.io/music-player-sticker</a>
+        <br><br>
+        <strong>源码仓库</strong>
+        <a class="link" href="https://github.com/xingfangxi6/music-player-sticker">github.com/xingfangxi6/music-player-sticker</a>
+      </div>
+    </div>
+    <div class="footer"><span>Apple Music 贴纸｜项目说明与使用数据</span><span>01 / 02</span></div>
+  </section>
+
+  <section class="page">
+    <div class="accent"></div>
+    <div class="eyebrow">产品能力与面试试用路径</div>
+    <h2 style="font-size:23pt;margin-top:2mm;">从上传照片到成图导出</h2>
+
+    <div class="flow">
+      <div class="flow-item"><div class="flow-num">01</div><div class="flow-text">上传照片，调整缩放、位置、画布比例和背景。</div></div>
+      <div class="flow-item"><div class="flow-num">02</div><div class="flow-text">编辑歌名、歌词、进度、封面与播放器样式。</div></div>
+      <div class="flow-item"><div class="flow-num">03</div><div class="flow-text">处理人物与播放器前后关系，生成高清 PNG。</div></div>
+    </div>
+
+    <div class="section">
+      <h2>关键能力</h2>
+      <div class="grid-2">
+        <div class="card"><h3>照片与画布</h3><p>照片缩放、移动、适配方式；画布比例、背景图与多图拼贴。</p></div>
+        <div class="card"><h3>播放器编辑</h3><p>歌词、进度、封面、材质、配色、尺寸、透明度均可编辑。</p></div>
+        <div class="card"><h3>视觉层次</h3><p>毛玻璃与液态玻璃效果；橡皮擦支持人物前景、撤销、重做与恢复。</p></div>
+        <div class="card"><h3>跨端与导出</h3><p>桌面拖拽、移动端手势；全程本地处理图片，无后端依赖。</p></div>
+      </div>
+    </div>
+
+    <div class="section">
+      <h2>功能效果</h2>
+      <div class="gallery">
+        <img src="showcase/01-Apple-Music贴纸-卖点.png" alt="Apple Music 风格播放器贴纸">
+        <img src="showcase/03-Apple-Music贴纸-样式与橡皮擦.png" alt="样式与橡皮擦">
+        <img src="showcase/04-Apple-Music贴纸-歌曲与导出.png" alt="歌曲与导出">
+      </div>
+    </div>
+
+    <div class="trial">
+      <div class="trial-box">
+        <div class="label">在线体验｜建议手机浏览器打开</div>
+        <a href="https://xingfangxi6.github.io/music-player-sticker/">xingfangxi6.github.io/music-player-sticker/</a>
+      </div>
+      <div class="trial-box light">
+        <div class="label">完整源码、证据与说明</div>
+        <a href="https://github.com/xingfangxi6/music-player-sticker">github.com/xingfangxi6/music-player-sticker</a>
+      </div>
+    </div>
+    <p class="fineprint" style="margin-top:4mm;">说明：本项目为非官方 Apple Music 风格视觉练习与照片编辑工具，与 Apple Inc. 或 Apple Music 无关联、未获其认可。</p>
+    <div class="footer"><span>Apple Music 贴纸｜项目说明与使用数据</span><span>02 / 02</span></div>
+  </section>
+</body>
+</html>
